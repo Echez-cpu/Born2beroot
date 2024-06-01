@@ -109,8 +109,10 @@ Ok
 
 
 
+
 🔷 Step 3: Setting up your VM partitions
 Go to Start (The green arrow).
+
 
 Note: you will only be able to use your Keyboard to operate your Virtual Machine.
 
@@ -120,11 +122,15 @@ Select Scaled Mode (Host+C) then, with your mouse drag the VM window.
 Select Virtual Screen 1 then, select Scale to 200% (autoscaled output)
 Select Install (Do not select "Graphical install").
 
+
 Select a language: English
+
 
 Select your location: Australia
 
+
 Configure the keyboard: American English
+
 
 Configure the network:
 
@@ -236,24 +242,33 @@ LVM configuration action: Create logical volume
 Volume group: LVMGroup
 Logical volume name: home
 Logical volume size: 1G
+
+
 🔸
 
 LVM configuration action: Create logical volume
 Volume group: LVMGroup
 Logical volume name: var
 Logical volume size: 1G
+
+
 🔸
 
 LVM configuration action: Create logical volume
 Volume group: LVMGroup
 Logical volume name: srv
 Logical volume size: 1G
+
+
 🔸
 
 LVM configuration action: Create logical volume
 Volume group: LVMGroup
 Logical volume name: tmp
 Logical volume size: 1G
+
+
+
 🔸
 
 LVM configuration action: Create logical volume
@@ -261,6 +276,9 @@ Volume group: LVMGroup
 Logical volume name: var-log (yes, type only one '-' which will be automatically updated to '--')
 Logical volume size: 1056MB
 LVM configuration action: Finish
+
+
+
 🔸
 
 Under the line with "LV home" in it, select #1
@@ -269,6 +287,10 @@ How to use this partition: Ext4 journaling file system
 Partition settings: Mount point:   none
 Mount point for this partition: /home - user home directories
 Partition settings: Done setting up the partition
+
+
+
+
 🔸
 
 Under the line with "LV root" in it, select #1
@@ -277,6 +299,10 @@ How to use this partition: Ext4 journaling file system
 Partition settings: Mount point:   none
 Mount point for this partition: / - the root file system
 Partition settings: Done setting up the partition
+
+
+
+
 🔸
 
 Under the line with "LV srv" in it, select #1
@@ -285,12 +311,18 @@ How to use this partition: Ext4 journaling file system
 Partition settings: Mount point:   none
 Mount point for this partition: /srv - data for services provided by this system
 Partition settings: Done setting up the partition
+
+
+
 🔸
 
 Under the line with "LV swap" in it, select #1
 Partition settings: Use as:    do not use
 How to use this partition: swap area
 Partition settings: Done setting up the partition
+
+
+
 🔸
 
 Under the line with "LV tmp" in it, select #1
@@ -299,6 +331,9 @@ How to use this partition: Ext4 journaling file system
 Partition settings: Mount point:   none
 Mount point for this partition: /tmp - temporary files
 Partition settings: Done setting up the partition
+
+
+
 🔸
 
 Under the line with "LV var" in it, select #1
@@ -307,6 +342,10 @@ How to use this partition: Ext4 journaling file system
 Partition settings: Mount point:   none
 Mount point for this partition: /var - variable data
 Partition settings: Done setting up the partition
+
+
+
+
 🔸
 
 Under the line with "LV var-log" in it, select #1
@@ -333,13 +372,22 @@ Install the GRUB boot loader to the master boot record?: Yes
 Device for boot loader installation: /dev/sda (ata-VBOX_HARDDISK_xxxxxxxxxx-xxxxxxxx)
 Finish the installation:
 
+
+
+
+
 Installation complete: Continue
 🔷 Step 4: Starting & setting up your VM
+
+
 🔸 4.1: Starting up your VM
 At every start up, use your encryption password.
 You can either:
 Login as root or
 Login as <your_intra_username>, then later use su - to log in as root if required.
+
+
+
 🔸 4.2: Installing Sudo
 Ensure you are logged in as root: su -
 apt-get update -y
@@ -349,10 +397,20 @@ sudo usermod -aG sudo <your_intra_username> to add user in the group 'sudo'.
 getent group sudo to check if user is in sudo group.
 sudo visudo to open the sudoers file.
 Find the line: # User privilege specification. Underneath that line, type <your_intra_username>  	ALL=(ALL) ALL
+
+
+
 🔸 4.3: Installing Git
 sudo apt-get install git -y
+
+
+
+
 🔸 4.4: Installing Vim
 sudo apt-get install vim -y
+
+
+
 🔸 4.5: Installing & Configuring SSH (Secure Shell Host)
 sudo apt install openssh-server
 sudo systemctl status ssh to check SSH Server Status.
@@ -360,6 +418,10 @@ sudo vim /etc/ssh/sshd_config
 Find the line #Port22. Edit it to Port 4242 without the '#' in front of it.
 Save and Exit Vim. (Use :q then follow the prompts to save. ^ means <Ctrl>).
 sudo service ssh restart to restart the SSH Service.
+
+
+
+
 🔸 4.6: Installing & Configuring UFW (Uncomplicated Firewall)
 sudo apt-get install ufw to install UFW.
 sudo ufw enable to enable UFW.
@@ -367,6 +429,11 @@ sudo ufw status numbered to check the status of UFW.
 sudo ufw allow ssh to configure the Rules.
 sudo ufw allow 4242 to configure the Port Rules.
 sudo ufw status numbered to check the status of UFW 4242 Port.
+
+
+
+
+
 🔷 Step 5: Connecting to SSH
 Note: press <command> on your Apple Keyboard & your mouse should re-appear
 
